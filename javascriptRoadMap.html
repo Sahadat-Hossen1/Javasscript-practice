@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Learning Path - Complete Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --secondary-light: #34d399;
+            --intermediate: #f59e0b;
+            --intermediate-light: #fbbf24;
+            --advanced: #ef4444;
+            --advanced-light: #f87171;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #9ca3af;
+            --border-radius: 12px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Level Cards */
+        .level-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 50px;
+            justify-content: center;
+        }
+        
+        .level-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border-top: 6px solid var(--primary);
+        }
+        
+        .level-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .level-card.basic {
+            border-top-color: var(--primary);
+        }
+        
+        .level-card.intermediate {
+            border-top-color: var(--intermediate);
+        }
+        
+        .level-card.advanced {
+            border-top-color: var(--advanced);
+        }
+        
+        .level-card.bonus {
+            border-top-color: var(--secondary);
+        }
+        
+        .level-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .level-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .basic .level-icon {
+            background-color: var(--primary);
+        }
+        
+        .intermediate .level-icon {
+            background-color: var(--intermediate);
+        }
+        
+        .advanced .level-icon {
+            background-color: var(--advanced);
+        }
+        
+        .bonus .level-icon {
+            background-color: var(--secondary);
+        }
+        
+        .level-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .level-card .subtitle {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .level-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+        }
+        
+        .topic-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .project-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .project-list li {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        /* Topic Details Section */
+        .topic-details {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            display: none;
+        }
+        
+        .topic-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .topic-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .close-details {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-details:hover {
+            color: var(--advanced);
+        }
+        
+        .topic-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .topic-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-light);
+        }
+        
+        .topic-section h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .topic-section h3 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            border-top: 1px solid #e5e7eb;
+            margin-top: 40px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .level-cards {
+                flex-direction: column;
+            }
+            
+            .level-card {
+                min-width: 100%;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .topic-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Learning Path</h1>
+            <p>A complete roadmap from beginner to advanced JavaScript developer with interactive project guides</p>
+        </header>
+        
+        <main>
+            <div class="level-cards">
+                <!-- Basic Level Card -->
+                <div class="level-card basic" onclick="showDetails('basic')">
+                    <div class="level-title">
+                        <div class="level-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h2>Basic Level</h2>
+                            <div class="subtitle">শুরুতা–Beginner</div>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Build a strong foundation in JavaScript fundamentals.</p>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-check-circle"></i> Fundamentals (Variables, Data Types, Operators)</li>
+                            <li><i class="fas fa-check-circle"></i> Control Flow (if/else, switch)</li>
+                            <li><i class="fas fa-check-circle"></i> Loops (for, while, do...while)</li>
+                            <li><i class="fas fa-check-circle"></i> Functions (Declaration, Expression, Arrow)</li>
+                            <li><i class="fas fa-check-circle"></i> DOM Basics (Selectors, Events)</li>
+                        </ul>
+                        <div class="project-list">
+                            <p><strong>🎯 Basic Projects:</strong></p>
+                            <ul>
+                                <li>Calculator</li>
+                                <li>To-Do List</li>
+                                <li>Counter App</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Intermediate Level Card -->
+                <div class="level-card intermediate" onclick="showDetails('intermediate')">
+                    <div class="level-title">
+                        <div class="level-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h2>Intermediate Level</h2>
+                            <div class="subtitle">Where JavaScript gets really fun</div>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Master arrays, objects, ES6+ features, and asynchronous JavaScript.</p>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-check-circle"></i> Arrays & Objects Deep Dive</li>
+                            <li><i class="fas fa-check-circle"></i> ES6+ Modern JavaScript</li>
+                            <li><i class="fas fa-check-circle"></i> Asynchronous JavaScript</li>
+                            <li><i class="fas fa-check-circle"></i> Working with APIs</li>
+                        </ul>
+                        <div class="project-list">
+                            <p><strong>🎯 Intermediate Projects:</strong></p>
+                            <ul>
+                                <li>Weather App (API)</li>
+                                <li>Notes App (LocalStorage)</li>
+                                <li>Random Password Generator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Level Card -->
+                <div class="level-card advanced" onclick="showDetails('advanced')">
+                    <div class="level-title">
+                        <div class="level-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div>
+                            <h2>Advanced Level</h2>
+                            <div class="subtitle">Become a true JavaScript developer</div>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Learn OOP, functional programming, advanced async concepts and data structures.</p>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-check-circle"></i> Object-Oriented Programming</li>
+                            <li><i class="fas fa-check-circle"></i> Functional Programming</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced Async Concepts</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced DOM & Performance</li>
+                            <li><i class="fas fa-check-circle"></i> Data Structures & Algorithms</li>
+                        </ul>
+                        <div class="project-list">
+                            <p><strong>🎯 Advanced Projects:</strong></p>
+                            <ul>
+                                <li>E-commerce Cart System</li>
+                                <li>Blog Site with Search & Filter</li>
+                                <li>News Site from API</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bonus Level Card -->
+                <div class="level-card bonus" onclick="showDetails('bonus')">
+                    <div class="level-title">
+                        <div class="level-icon">
+                            <i class="fas fa-forward"></i>
+                        </div>
+                        <div>
+                            <h2>Bonus: Next Steps</h2>
+                            <div class="subtitle">After JavaScript → What Next?</div>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Become a MERN stack developer with these technologies.</p>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-check-circle"></i> JavaScript Mastery</li>
+                            <li><i class="fas fa-check-circle"></i> React.js (Components, State, Hooks)</li>
+                            <li><i class="fas fa-check-circle"></i> Node.js & Express.js</li>
+                            <li><i class="fas fa-check-circle"></i> MongoDB Database</li>
+                            <li><i class="fas fa-check-circle"></i> Authentication (JWT)</li>
+                            <li><i class="fas fa-check-circle"></i> Full Stack Projects</li>
+                        </ul>
+                        <div class="project-list">
+                            <p><strong>🚀 Full Stack Projects:</strong></p>
+                            <ul>
+                                <li>E-commerce Platform</li>
+                                <li>Social Media App</li>
+                                <li>Task Management System</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Topic Details Section -->
+            <div id="basicDetails" class="topic-details">
+                <div class="topic-header">
+                    <h2>Basic Level - JavaScript Fundamentals</h2>
+                    <button class="close-details" onclick="closeDetails()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="topic-content">
+                    <div class="topic-section">
+                        <h3><i class="fas fa-book"></i> ১.১ Fundamentals</h3>
+                        <ul>
+                            <li>JavaScript কি এবং কোথায় ব্যবহার হয়</li>
+                            <li>Variables: var, let, const</li>
+                            <li>Data Types: string, number, boolean, null, undefined, object</li>
+                            <li>Operators: +, -, *, /, %, ==, ===, !=, &&, ||</li>
+                            <li>Comments</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-code-branch"></i> ১.২ Control Flow</h3>
+                        <ul>
+                            <li>if, else if, else</li>
+                            <li>switch</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-redo"></i> ১.৩ Loops</h3>
+                        <ul>
+                            <li>for</li>
+                            <li>while</li>
+                            <li>do...while</li>
+                            <li>for...of</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-cogs"></i> ১.৪ Functions</h3>
+                        <ul>
+                            <li>Function declaration</li>
+                            <li>Function expression</li>
+                            <li>Arrow function</li>
+                            <li>Parameters এবং return value</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-window-maximize"></i> ১.৫ DOM Basics</h3>
+                        <ul>
+                            <li>DOM কি</li>
+                            <li>document.querySelector()</li>
+                            <li>document.getElementById()</li>
+                            <li>Text change, color change, class add/remove</li>
+                            <li>Button click event (addEventListener)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-project-diagram"></i> 🎯 Basic Projects</h3>
+                        <ul>
+                            <li>Calculator</li>
+                            <li>To-Do List</li>
+                            <li>Counter App</li>
+                            <li>Color changer</li>
+                            <li>Digital clock</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="intermediateDetails" class="topic-details">
+                <div class="topic-header">
+                    <h2>Intermediate Level - Modern JavaScript</h2>
+                    <button class="close-details" onclick="closeDetails()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="topic-content">
+                    <div class="topic-section">
+                        <h3><i class="fas fa-layer-group"></i> ২.১ Arrays & Objects Deep</h3>
+                        <ul>
+                            <li>Array methods: map, filter, reduce, find, some, every, sort</li>
+                            <li>Object destructuring</li>
+                            <li>Array destructuring</li>
+                            <li>Spread operator (...)</li>
+                            <li>Rest parameter</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-bolt"></i> ২.২ ES6+ (Modern JavaScript)</h3>
+                        <ul>
+                            <li>Template literals</li>
+                            <li>Arrow functions advanced</li>
+                            <li>Enhanced object literals</li>
+                            <li>Modules: import / export</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-clock"></i> ২.৩ Asynchronous JavaScript</h3>
+                        <ul>
+                            <li>Callbacks</li>
+                            <li>Promises</li>
+                            <li>async / await</li>
+                            <li>Error handling (try/catch)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-cloud"></i> ২.৪ APIs</h3>
+                        <ul>
+                            <li>Fetch API</li>
+                            <li>JSON হ্যান্ডেল করা</li>
+                            <li>Real-time example: Weather API, Product API fetch</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-project-diagram"></i> 🎯 Intermediate Projects</h3>
+                        <ul>
+                            <li>Weather App (API)</li>
+                            <li>Notes App (LocalStorage)</li>
+                            <li>Random Password Generator</li>
+                            <li>QR Code Generator</li>
+                            <li>Product filtering (search + category filter)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="advancedDetails" class="topic-details">
+                <div class="topic-header">
+                    <h2>Advanced Level - Expert JavaScript</h2>
+                    <button class="close-details" onclick="closeDetails()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="topic-content">
+                    <div class="topic-section">
+                        <h3><i class="fas fa-object-group"></i> ৩.১ Object-Oriented Programming (OOP)</h3>
+                        <ul>
+                            <li>Class</li>
+                            <li>Constructor</li>
+                            <li>Inheritance</li>
+                            <li>Encapsulation</li>
+                            <li>Polymorphism</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-function"></i> ৩.২ Functional Programming Concepts</h3>
+                        <ul>
+                            <li>Higher-order functions</li>
+                            <li>Pure functions</li>
+                            <li>Immutability</li>
+                            <li>Closures (very important!)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-tachometer-alt"></i> ৩.৩ Advanced Async Concepts</h3>
+                        <ul>
+                            <li>Event loop</li>
+                            <li>Microtask queue</li>
+                            <li>Debounce</li>
+                            <li>Throttle</li>
+                            <li>Web Workers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-window-restore"></i> ৩.৪ Advanced DOM</h3>
+                        <ul>
+                            <li>Virtual DOM basics</li>
+                            <li>Performance optimization</li>
+                            <li>Event delegation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-sitemap"></i> ৩.৫ Data Structures & Algorithms Basic</h3>
+                        <ul>
+                            <li>Stack, Queue</li>
+                            <li>Set, Map</li>
+                            <li>Recursion</li>
+                            <li>Sorting (Bubble, Quick, Merge → শুধু basic জানলেই হবে)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-project-diagram"></i> 🎯 Advanced Projects</h3>
+                        <ul>
+                            <li>E-commerce cart system</li>
+                            <li>Blog site with search & filter</li>
+                            <li>News site from API</li>
+                            <li>Netflix-style UI</li>
+                            <li>Chat application (front-end only)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="bonusDetails" class="topic-details">
+                <div class="topic-header">
+                    <h2>Bonus - MERN Stack Development Path</h2>
+                    <button class="close-details" onclick="closeDetails()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="topic-content">
+                    <div class="topic-section">
+                        <h3><i class="fas fa-road"></i> MERN Developer Path</h3>
+                        <p>If you want to become a MERN stack developer, follow this path:</p>
+                        <ol>
+                            <li><span class="highlight">JavaScript Master</span> - Complete all three levels above</li>
+                            <li><span class="highlight">React.js</span> - components, props, state, hooks, context</li>
+                            <li><span class="highlight">Node.js</span> - Server-side JavaScript runtime</li>
+                            <li><span class="highlight">Express.js</span> - Web framework for Node.js</li>
+                            <li><span class="highlight">MongoDB</span> - NoSQL database</li>
+                            <li><span class="highlight">Authentication JWT</span> - Secure user authentication</li>
+                            <li><span class="highlight">Full Stack Projects</span> - Build complete applications</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-lightbulb"></i> Learning Tips</h3>
+                        <ul>
+                            <li>Practice daily - even 30 minutes makes a difference</li>
+                            <li>Build projects - theory alone won't make you a developer</li>
+                            <li>Join coding communities - learn from others</li>
+                            <li>Don't skip fundamentals - they're the building blocks</li>
+                            <li>Learn to debug - it's a crucial skill</li>
+                            <li>Read documentation - it's the source of truth</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-section">
+                        <h3><i class="fas fa-calendar-alt"></i> Suggested Timeline</h3>
+                        <ul>
+                            <li><strong>Month 1-2:</strong> Basic Level + Projects</li>
+                            <li><strong>Month 3-4:</strong> Intermediate Level + Projects</li>
+                            <li><strong>Month 5-6:</strong> Advanced Level + Projects</li>
+                            <li><strong>Month 7-9:</strong> React.js + Node.js Basics</li>
+                            <li><strong>Month 10-12:</strong> Full Stack Projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>JavaScript Learning Path Guide • Designed for beginner to advanced developers</p>
+            <p>Start your journey today and become a JavaScript expert!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Function to show details for a specific level
+        function showDetails(level) {
+            // Hide all details sections first
+            const allDetails = document.querySelectorAll('.topic-details');
+            allDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show the selected level details
+            const selectedDetail = document.getElementById(level + 'Details');
+            selectedDetail.classList.add('active');
+            
+            // Scroll to the details section
+            selectedDetail.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Function to close the details section
+        function closeDetails() {
+            const allDetails = document.querySelectorAll('.topic-details');
+            allDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+        }
+        
+        // Initialize with the first level (Basic) details open
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show basic level details by default
+            showDetails('basic');
+        });
+    </script>
+</body>
+</html>

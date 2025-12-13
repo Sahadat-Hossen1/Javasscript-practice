@@ -1,0 +1,22 @@
+{
+  "name": "only-js",
+  "version": "1.0.0",
+  "description": "*  today i complete 30 question about loop for,for of,for in ,while,do while loop",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "start":"nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sahadat-Hossen1/Javasscript-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sahadat-Hossen1/Javasscript-practice/issues"
+  },
+  "homepage": "https://github.com/Sahadat-Hossen1/Javasscript-practice#readme"
+}

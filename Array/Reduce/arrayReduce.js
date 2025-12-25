@@ -117,9 +117,9 @@ console.log(sum); // 15
 // 👉 একে flat array বানাও [1,2,3,4,5]
 
 // 🧩 Task 10: String join
-const letters = ["J", "S", "R", "E", "D", "U", "C", "E"];
-const JSREDUCE=letters.reduce((acc,curr)=>acc.concat(curr),'')
-console.log(JSREDUCE);
+// const letters = ["J", "S", "R", "E", "D", "U", "C", "E"];
+// const JSREDUCE=letters.reduce((acc,curr)=>acc.concat(curr),'')
+// console.log(JSREDUCE);
 
 
 // 👉 reduce() ব্যবহার করে "JSREDUCE" বানাও।

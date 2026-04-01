@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple E-commerce Cart</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <!-- User Selection -->
+  <div class="mb-6">
+    <h1 class="text-xl font-bold mb-2">Select User</h1>
+    <select id="userSelect" class="p-2 border">
+      <option value="u1">Sahadat</option>
+      <option value="u2">Rahim</option>
+    </select>
+  </div>
+
+  <!-- Products -->
+  <div class="mb-6">
+    <h2 class="text-xl font-bold mb-2">Products</h2>
+
+    <div class="flex gap-4">
+      <button onclick="addToCart('p1')" class="bg-blue-500 text-white px-4 py-2">
+        Add T-Shirt (৳500)
+      </button>
+
+      <button onclick="addToCart('p2')" class="bg-blue-500 text-white px-4 py-2">
+        Add Shoes (৳1200)
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart -->
+  <div>
+    <h2 class="text-xl font-bold mb-2">Cart</h2>
+    <div id="cartItems" class="space-y-2"></div>
+    <p class="mt-4 font-bold">Total: ৳<span id="totalPrice">0</span></p>
+  </div>
+
+<script>
+/* ===============================
+   USERS
+================================ */
+const users = [
+  { id: "u1", name: "Sahadat" },
+  { id: "u2", name: "Rahim" }
+];
+
+/* ===============================
+   PRODUCTS
+================================ */
+const products = [
+  { id: "p1", title: "T-Shirt", price: 500 },
+  { id: "p2", title: "Shoes", price: 1200 }
+];
+
+/* ===============================
+   CARTS (Multiple Users)
+================================ */
+const carts = {
+  u1: { items: [], total: 0 },
+  u2: { items: [], total: 0 }
+};
+
+/* ===============================
+   HELPERS
+================================ */
+function getCurrentUserId() {
+  return document.getElementById("userSelect").value;
+}
+
+function getProductById(id) {
+  return products.find(p => p.id === id);
+}
+
+/* ===============================
+   ADD TO CART
+================================ */
+function addToCart(productId) {
+  const userId = getCurrentUserId();
+  const cart = carts[userId];
+  const product = getProductById(productId);
+
+  // Check if product already exists
+  const existingItem = cart.items.find(item => item.productId === productId);
+
+  if (existingItem) {
+    existingItem.quantity++;
+    existingItem.subTotal += product.price;
+  } else {
+    cart.items.push({
+      productId: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      subTotal: product.price
+    });
+  }
+
+  calculateTotal(cart);
+  renderCart();
+}
+
+/* ===============================
+   INCREASE QUANTITY
+================================ */
+function increaseQty(productId) {
+  const cart = carts[getCurrentUserId()];
+  const item = cart.items.find(i => i.productId === productId);
+
+  item.quantity++;
+  item.subTotal += item.price;
+
+  calculateTotal(cart);
+  renderCart();
+}
+
+/* ===============================
+   DECREASE QUANTITY
+================================ */
+function decreaseQty(productId) {
+  const cart = carts[getCurrentUserId()];
+  const item = cart.items.find(i => i.productId === productId);
+
+  if (item.quantity > 1) {
+    item.quantity--;
+    item.subTotal -= item.price;
+  }
+
+  calculateTotal(cart);
+  renderCart();
+}
+
+/* ===============================
+   REMOVE FROM CART
+================================ */
+function removeItem(productId) {
+  const cart = carts[getCurrentUserId()];
+
+  cart.items = cart.items.filter(i => i.productId !== productId);
+
+  calculateTotal(cart);
+  renderCart();
+}
+
+/* ===============================
+   TOTAL CALCULATION
+================================ */
+function calculateTotal(cart) {
+  cart.total = cart.items.reduce((sum, item) => sum + item.subTotal, 0);
+}
+
+/* ===============================
+   RENDER CART UI
+================================ */
+function renderCart() {
+  const cart = carts[getCurrentUserId()];
+  const cartDiv = document.getElementById("cartItems");
+  const totalPrice = document.getElementById("totalPrice");
+
+  cartDiv.innerHTML = "";
+
+  cart.items.forEach(item => {
+    cartDiv.innerHTML += `
+      <div class="flex justify-between items-center bg-white p-3 border">
+        <div>
+          <p class="font-bold">${item.title}</p>
+          <p>৳${item.subTotal}</p>
+        </div>
+
+        <div class="flex gap-2">
+          <button onclick="decreaseQty('${item.productId}')" class="px-2 bg-gray-300">-</button>
+          <span>${item.quantity}</span>
+          <button onclick="increaseQty('${item.productId}')" class="px-2 bg-gray-300">+</button>
+          <button onclick="removeItem('${item.productId}')" class="px-2 bg-red-500 text-white">X</button>
+        </div>
+      </div>
+    `;
+  });
+
+  totalPrice.textContent = cart.total;
+}
+
+/* ===============================
+   USER CHANGE EVENT
+================================ */
+document.getElementById("userSelect").addEventListener("change", renderCart);
+</script>
+
+</body>
+</html>

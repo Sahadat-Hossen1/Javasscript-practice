@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript OOP Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .section {
+            scroll-margin-top: 2rem;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: #f7fafc;
+            border-left: 4px solid #4299e1;
+        }
+        .concept-box {
+            border-left: 4px solid;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-700 mb-4">JavaScript Object-Oriented Programming Documentation</h1>
+            <p class="text-lg text-gray-600">Complete guide from Beginner to Professional level</p>
+        </header>
+
+        <!-- Navigation -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Documentation Navigation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="#part1" class="bg-blue-100 text-blue-700 hover:bg-blue-200 p-4 rounded-lg transition text-center font-medium">
+                    <i class="fas fa-play-circle mr-2"></i>Part 1: Beginner
+                </a>
+                <a href="#part2" class="bg-yellow-100 text-yellow-700 hover:bg-yellow-200 p-4 rounded-lg transition text-center font-medium">
+                    <i class="fas fa-graduation-cap mr-2"></i>Part 2: Intermediate
+                </a>
+                <a href="#part3" class="bg-orange-100 text-orange-700 hover:bg-orange-200 p-4 rounded-lg transition text-center font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>Part 3: Advanced
+                </a>
+                <a href="#part4" class="bg-red-100 text-red-700 hover:bg-red-200 p-4 rounded-lg transition text-center font-medium">
+                    <i class="fas fa-briefcase mr-2"></i>Part 4: Professional
+                </a>
+            </div>
+        </div>
+
+        <!-- PART 1 — Beginner -->
+        <section id="part1" class="section bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">1</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-blue-700">PART 1 — Beginner (JS Objects Basics)</h2>
+                    <p class="text-gray-600">Understand what objects are and how to use them.</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-2">🎯 Goal:</h3>
+                    <p class="text-gray-700">Understand what objects are and how to use them.</p>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Topics Covered</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>What is an Object</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Object literal syntax</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Accessing properties (. vs [])</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Add / update / delete properties</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Nested objects</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Looping through objects</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Object methods</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>this keyword (basic)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Learning Example</h3>
+                    <div class="code-block p-4 rounded-lg">
+                        <pre><code>const user = {
+  name: "Sahadat",
+  age: 25,
+  greet() {
+    return "Hello " + this.name;
+  }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Key Concepts</h3>
+                    <div class="concept-box border-blue-500 p-4">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Objects store related data</li>
+                            <li>Functions inside objects are called methods</li>
+                            <li><code>this</code> refers to the current object</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Practice Ideas</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Create a car object</h4>
+                            <p class="text-sm text-gray-600">Define properties like make, model, year, and methods like start(), drive()</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Create a student object with method getResult()</h4>
+                            <p class="text-sm text-gray-600">Include properties for name, grades, and a method to calculate results</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Loop through an object and print key-value pairs</h4>
+                            <p class="text-sm text-gray-600">Use for...in loop to iterate through object properties</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 2 — Intermediate -->
+        <section id="part2" class="section bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold mr-4">2</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-yellow-700">🟡 PART 2 — Intermediate (OOP Foundations)</h2>
+                    <p class="text-gray-600">Understand how JavaScript models objects and reuse behavior.</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">🎯 Goal:</h3>
+                    <p class="text-gray-700">Understand how JavaScript models objects and reuse behavior.</p>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Topics Covered</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>Constructor functions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>new keyword</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>Prototypes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>__proto__</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>Object.create</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>Class syntax (class, constructor)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
+                            <span>Inheritance (extends, super)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Learning Example</h3>
+                    <div class="code-block p-4 rounded-lg">
+                        <pre><code>class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Concepts</h3>
+                    <div class="concept-box border-yellow-500 p-4">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>JS uses prototype-based inheritance</li>
+                            <li>Classes are syntax sugar over prototypes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Practice</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-yellow-600 mb-2">Create Animal → Dog → Cat hierarchy</h4>
+                            <p class="text-sm text-gray-600">Implement inheritance chain with base Animal class and derived Dog and Cat classes</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-yellow-600 mb-2">Build a BankAccount class</h4>
+                            <p class="text-sm text-gray-600">Create a class with methods for deposit, withdraw, and getBalance</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-yellow-600 mb-2">Override methods</h4>
+                            <p class="text-sm text-gray-600">Practice method overriding in inherited classes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 3 — Advanced -->
+        <section id="part3" class="section bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-4">3</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-orange-700">🟠 PART 3 — Advanced (Real OOP + Internals)</h2>
+                    <p class="text-gray-600">Understand how JS actually works behind the scenes.</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="bg-orange-50 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-orange-700 mb-2">🎯 Goal:</h3>
+                    <p class="text-gray-700">Understand how JS actually works behind the scenes.</p>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Topics Covered</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Prototype chain deep dive</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>hasOwnProperty</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>instanceof</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Object.getPrototypeOf</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Encapsulation (private fields #)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Getters & setters</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Composition vs Inheritance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                            <span>Mixins</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Learning Example</h3>
+                    <div class="code-block p-4 rounded-lg">
+                        <pre><code>class Bank {
+  #balance = 0;
+  deposit(amount) {
+    this.#balance += amount;
+  }
+  get balance() {
+    return this.#balance;
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Concepts</h3>
+                    <div class="concept-box border-orange-500 p-4">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Data hiding with private fields</li>
+                            <li>Prefer composition over inheritance when possible</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Practice</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-orange-600 mb-2">Create a logger mixin</h4>
+                            <p class="text-sm text-gray-600">Implement a mixin that adds logging capabilities to any class</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-orange-600 mb-2">Build a plugin system</h4>
+                            <p class="text-sm text-gray-600">Design a system that allows plugins to extend functionality</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-orange-600 mb-2">Write your own inheritance using prototypes</h4>
+                            <p class="text-sm text-gray-600">Manually implement inheritance without using class syntax</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 4 — Professional -->
+        <section id="part4" class="section bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-4">4</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-red-700">🔴 PART 4 — Professional (Design & Architecture)</h2>
+                    <p class="text-gray-600">Write scalable, maintainable, and clean object-oriented systems.</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="bg-red-50 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-red-700 mb-2">🎯 Goal:</h3>
+                    <p class="text-gray-700">Write scalable, maintainable, and clean object-oriented systems.</p>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Topics Covered</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>SOLID principles</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Design patterns: Factory</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Design patterns: Singleton</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Design patterns: Observer</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Design patterns: Strategy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Dependency Injection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Domain modeling</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-red-500 mt-1 mr-2"></i>
+                            <span>Clean architecture</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Example</h3>
+                    <div class="code-block p-4 rounded-lg">
+                        <pre><code>class PaymentService {
+  pay(strategy) {
+    strategy.pay();
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Concepts</h3>
+                    <div class="concept-box border-red-500 p-4">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Code for change</li>
+                            <li>Separate responsibilities</li>
+                            <li>Use interfaces (via patterns)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Practice</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-red-600 mb-2">Build a shopping cart system</h4>
+                            <p class="text-sm text-gray-600">Implement with proper separation of concerns and design patterns</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-red-600 mb-2">Implement Observer for notifications</h4>
+                            <p class="text-sm text-gray-600">Create a notification system using Observer pattern</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-red-600 mb-2">Create plugin-based architecture</h4>
+                            <p class="text-sm text-gray-600">Design a system that supports plugins and extensions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Reference -->
+        <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Quick Reference</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-700 mb-3">Object Literal Syntax</h3>
+                    <div class="code-block p-3 rounded">
+                        <pre><code>const obj = {
+  property: value,
+  method() { ... }
+};</code></pre>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-700 mb-3">Class Syntax</h3>
+                    <div class="code-block p-3 rounded">
+                        <pre><code>class MyClass {
+  constructor() { ... }
+  method() { ... }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-orange-700 mb-3">Inheritance</h3>
+                    <div class="code-block p-3 rounded">
+                        <pre><code>class Child extends Parent {
+  constructor() {
+    super();
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-red-700 mb-3">Private Field</h3>
+                    <div class="code-block p-3 rounded">
+                        <pre><code>class MyClass {
+  #privateField = value;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600">
+            <p class="mb-2">JavaScript OOP Documentation • Complete Learning Path</p>
+            <p class="text-sm">From Beginner Basics to Professional Design Patterns</p>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to Top functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

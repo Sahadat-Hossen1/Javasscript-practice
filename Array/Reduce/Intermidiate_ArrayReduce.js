@@ -5,7 +5,7 @@
 // console.log(result);
 // 👉 Expected Output
 // 20
-// 🧩 Task 2: Remove duplicates   [try next time]
+// 🧩 Task 2: Remove duplicates  
 // const nums = [1, 2, 2, 3, 4, 4, 5];
 // const result=nums.reduce((acc,curr)=>{
 // },[])
